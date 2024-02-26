@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="itemApp">
+
+<head>
+    <title>Item Collection</title>
+</head>
+
+<body>
+    <div ng-controller="ItemController as itemCtrl">
+        <h1>Item Collection</h1>
+
+        <input type="text" ng-model="itemCtrl.newItemName" placeholder="Enter item name">
+        <button ng-click="itemCtrl.addItem()">Add Item</button>
+
+        <ul>
+            <li ng-repeat="item in itemCtrl.items">
+                {{ item.name }} <button ng-click="itemCtrl.removeItem($index)">Remove</button>
+            </li>
+        </ul>
+
+        <p>Total number of items: {{ itemCtrl.items.length }}</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('itemApp', [])
+            .controller('ItemController', function($scope) {
+                var vm = this;
+                vm.items = [
+                    { name: 'Item 1' },
+                    { name: 'Item 2' },
+                    { name: 'Item 3' }
+                ];
+
+                vm.addItem = function() {
+                    if (vm.newItemName !== '') {
+                        vm.items.push({ name: vm.newItemName });
+                        vm.newItemName = '';
+                    }
+                };
+
+                vm.removeItem = function(index) {
+                    vm.items.splice(index, 1);
+                };
+            });
+    </script>
+</body>
+
+</html>
