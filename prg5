@@ -24,4 +24,21 @@ src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
 <script src="po.js"> </script> 
 </body> 
 </html> 
-Output 
+
+
+
+
+//po.js
+
+
+var app = angular.module('myApp',[]);
+app.controller('myController',function ($scope){
+    $scope.students = [
+        {name : 'Akshay', cgpa:8.8},
+        {name : 'krishna', cgpa:7.2},
+        {name : 'Johnson', cgpa:6.5},
+        {name : 'safwan', cgpa:7.5},
+        {name : 'Zeenath', cgpa:8.5}
+        
+    ];
+});
